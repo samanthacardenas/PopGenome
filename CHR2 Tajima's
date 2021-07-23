@@ -1,0 +1,80 @@
+[smc223@sol ~]$ srun --partition=lts --nodes=1 --ntasks-per-node=1 --time=2000 --pty /bin/bash
+manpath: warning: $MANPATH set, ignoring /etc/man_db.conf
+System Architecture: avx2
+Processor Family: haswell
+[smc223@sol-a101 ~]$ module load r
+[smc223@sol-a101 ~]$ r
+bash: r: command not found
+[smc223@sol-a101 ~]$ R
+
+R version 4.0.3 (2020-10-10) -- "Bunny-Wunnies Freak Out"
+Copyright (C) 2020 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> library(PopGenome)
+Loading required package: ff
+Loading required package: bit
+
+Attaching package: ‘bit’
+
+The following object is masked from ‘package:base’:
+
+    xor
+
+Attaching package ff
+- getOption("fftempdir")=="/share/ceph/scratch/smc223/6017359/RtmpxFvYzs/ff"
+
+- getOption("ffextension")=="ff"
+
+- getOption("ffdrop")==TRUE
+
+- getOption("fffinonexit")==TRUE
+
+- getOption("ffpagesize")==65536
+
+- getOption("ffcaching")=="mmnoflush"  -- consider "ffeachflush" if your system stalls on large writes
+
+- getOption("ffbatchbytes")==16777216 -- consider a different value for tuning your system
+
+- getOption("ffmaxbytes")==536870912 -- consider a different value for tuning your system
+
+
+Attaching package: ‘ff’
+
+The following objects are masked from ‘package:utils’:
+
+    write.csv, write.csv2
+
+The following objects are masked from ‘package:base’:
+
+    is.factor, is.ordered
+
+> library(rehh)
+> CHR2 <- "/share/ceph/wym219group/shared/data/1000Genomes/CandidateLoci/LCT.HC3202_chr2.134787850-136837184.vcf.gz"> GENOME.class <- readVCF(CHR2,numcols=1000,tid="chr2",frompos=134787850,topos=136837184,approx=FALSE,out="",parallel=FALSE,gffpath=FALSE)
+vcff::open : file opened, contains 3202 samples
+[1] "Available ContigIdentifiers (parameter tid):"
+[1] "chr2"
+(!!) whop_tabix::getFieldPtr : requested field 2338 but only 2337 present!
+VCF_readIntoCodeMatrix ::  Problem with reading sample's data!
+	debug info : per_row =2329
+wanted_sample[per_row]=2338
+	baseindex=9, field = 2347
+	numparsedfields=2337
+Error in 1:numusedcols : NA/NaN argument
+In addition: Warning message:
+In readVCF(CHR2, numcols = 1000, tid = "chr2", frompos = 134787850,  :
+  NAs introduced by coercion
